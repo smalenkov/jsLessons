@@ -49,7 +49,30 @@
     };
 
     setTimeout(bind(user.sayHi, user), 1000);
+
   }
 
-  window.run = runDoc_3;
+  function runDoc_4() {
+
+    function bind(func, context) {
+      return function() {
+        return func.apply(context, arguments);
+      };
+    }
+    
+    var user = {
+      firstName: "Вася",
+      sayHi: function(who) { // здесь у sayHi есть один аргумент
+        alert(this.firstName + ": Привет, " + who);
+      }
+    };
+
+    var sayHi = bind(user.sayHi, user);
+
+    // контекст Вася, а аргумент передаётся "как есть"
+    sayHi("Петя"); // Вася: Привет, Петя
+    sayHi("Маша"); // Вася: Привет, Маша
+  }
+
+  window.run = runDoc_4;
 })();
