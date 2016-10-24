@@ -32,14 +32,14 @@
     bind(alertFio, user)("Васильевич");
   }
 
+  function bind(func, context) {
+    return function() {
+      return func.apply(context, arguments);
+    };
+  }
 
   function runDoc_3() {
 
-    function bind(func, context) {
-      return function() {
-        return func.apply(context, arguments);
-      };
-    }
 
     var user = {
       firstName: "Вася",
@@ -54,12 +54,6 @@
 
   function runDoc_4() {
 
-    function bind(func, context) {
-      return function() {
-        return func.apply(context, arguments);
-      };
-    }
-    
     var user = {
       firstName: "Вася",
       sayHi: function(who) { // здесь у sayHi есть один аргумент
@@ -67,7 +61,8 @@
       }
     };
 
-    var sayHi = bind(user.sayHi, user);
+    // var sayHi = bind(user.sayHi, user);
+    var sayHi = user.sayHi.bind(user); // встроенный bind
 
     // контекст Вася, а аргумент передаётся "как есть"
     sayHi("Петя"); // Вася: Привет, Петя
