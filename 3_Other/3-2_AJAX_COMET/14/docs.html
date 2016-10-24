@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Глобальный объект</title>
+  <!--  Polyfills -->
+  <script type="text/javascript" src="js/es6-promise.min.js"></script>
+  <script type="text/javascript" src="js/fetch.js"></script>
+</head>
+<body>
+
+  <script type="text/javascript">
+    fetch('data/data.json')
+      .then(function(response) {
+        console.log(response.headers.get('Content-Type'));
+        console.log(response.status);
+        return response.json();
+      })
+      .then(function(obj) {
+        // alert(obj.emails_url);
+        document.body.innerHTML = obj.user2.name
+      })
+      .catch(alert);
+  </script>
+
+</body>
+</html>

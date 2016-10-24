@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Создание объектов через "new"</title>
+  <!--  Polyfills -->
+  <script type="text/javascript" src="docs.js"></script>
+  <style>
+    #testel {
+      width: 250px;
+      height: 250px;
+      background-color: #cccccc;
+      transition-property: width, height, background-color, color;
+      transition-duration: 2s;
+    }
+
+    #testel:hover {
+      background-color: #333333;
+      color: #ffffff;
+      width: 150px;
+      height: 150px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="testel" contenteditable="true">
+    Hello, man! :)
+  </div>
+
+  <script type="text/javascript">
+    runDoc_1();
+  </script>
+
+</body>
+</html>
