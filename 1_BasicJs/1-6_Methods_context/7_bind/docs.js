@@ -69,5 +69,122 @@
     sayHi("Маша"); // Вася: Привет, Маша
   }
 
-  window.run = runDoc_4;
+
+  // Карринг
+
+  function runDoc_5() {
+
+    function mul(a, b, c) {
+      return a * b + c;
+    }
+
+    // double умножает только на два
+    var double = mul.bind(null, 2, 3); // контекст фиксируем null, он не используется
+
+    alert(double(3)); // = mul(2, 3, 3) = 9
+    alert(double(4)); // = mul(2, 3, 4) = 10
+    alert(double(5)); // = mul(2, 3, 5) = 11
+  }
+
+
+  function runTask_1() {
+
+    function f() {
+      alert(this);
+    }
+
+    var user = {
+      g: f.bind("Hello")
+    };
+
+    var p = f.bind("hello");
+
+    p();
+    user.g();
+  }
+
+  function runTask_2() {
+
+    function f() {
+      alert(this.name);
+    }
+
+    f = f.bind({name: "Вася"}).bind({name: "Петя"});
+
+    // f = bind(f, {name: "Вася"} );
+    // f = bind(f, {name: "Петя"} );
+
+    f(); // Вася
+  }
+
+  function runTask_3() {
+
+    function sayHi() {
+      alert(this.name);
+    }
+    sayHi.test = 5;
+    alert(sayHi.test); // 5
+
+    var bound = sayHi.bind({
+      name: "Вася"
+    });
+
+    alert(bound.test); // Ничего не выведет т.к. у функция обертка самостоятельный объект (у нее нет свойств)
+  }
+
+  // Задача 4
+
+  function runTask_4() {
+
+    "use strict";
+
+    function ask(question, answer, ok, fail) {
+      var result = prompt(question, '');
+      if (result.toLowerCase() == answer.toLowerCase()) ok();
+      else fail();
+    }
+
+    var user = {
+      login: 'Василий',
+      password: '12345',
+
+      loginOk: function() {
+        alert(this.login + ' вошёл в сайт');
+      },
+
+      loginFail: function() {
+        alert(this.login + ': ошибка входа');
+      },
+
+      checkPassword: function() {
+        ask("Ваш пароль?", this.password, this.loginOk.bind(this), this.loginFail.bind(this));
+      }
+    };
+
+    user.checkPassword();
+  }
+
+
+  // Задача 5
+
+  function runTask_5() {
+
+    function ask(question, answer, ok, fail) {
+      var result = prompt(question, '');
+      if (result.toLowerCase() == answer.toLowerCase()) ok();
+      else fail();
+    }
+
+    ask("Выпустить птичку?", "да", fly, die);
+
+    function fly() {
+      alert( 'улетела :)' );
+    }
+
+    function die() {
+      alert( 'птичку жалко :(' );
+    }
+  }
+
+  window.run = runTask_4;
 })();
