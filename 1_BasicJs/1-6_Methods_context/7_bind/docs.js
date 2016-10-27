@@ -169,22 +169,32 @@
 
   function runTask_5() {
 
+    "use strict";
+
     function ask(question, answer, ok, fail) {
       var result = prompt(question, '');
       if (result.toLowerCase() == answer.toLowerCase()) ok();
       else fail();
     }
 
-    ask("Выпустить птичку?", "да", fly, die);
+    var user = {
+      login: 'Василий',
+      password: '12345',
 
-    function fly() {
-      alert( 'улетела :)' );
-    }
+      // метод для вызова из ask
+      loginDone: function(result) {
+        alert(this.login + (result ? ' вошёл в сайт' : ' ошибка входа'));
+      },
 
-    function die() {
-      alert( 'птичку жалко :(' );
-    }
+      checkPassword: function() {
+        ask("Ваш пароль?", this.password, this.loginDone.bind(this, true), this.loginDone.bind(this, false));
+      }
+    };
+
+    var vasya = user;
+    user = null;
+    vasya.checkPassword();
   }
 
-  window.run = runTask_4;
+  window.run = runTask_5;
 })();
