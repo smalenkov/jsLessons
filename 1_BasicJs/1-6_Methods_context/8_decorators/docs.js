@@ -22,7 +22,7 @@
     // функция может быть произвольной, например такой:
     var fibonacci = function f(n) {
       return (n > 2) ? f(n - 1) + f(n - 2) : 1;
-    }
+    };
 
     // использование: завернём fibonacci в декоратор
     fibonacci = timingDecorator(fibonacci, "fibo");
@@ -106,10 +106,29 @@
 
   function runTask_1() {
 
-    function isAdmin() {
-      return true;
+    function work(a, b) {
+      alert(a + b);
     }
 
+    function makeLogging(f, log) {
+      return function () {
+        log.push([].slice.call(arguments)); // Одалживаем метод slice и выполняем его в контексте arguments
+        var result = f.apply(this, arguments);
+      };
+      return result;
+    }
+
+    var log = [];
+
+    work = makeLogging(work, log);
+
+    work(1, 2);
+    work(4, 6);
+
+    for (var i=0; i < log.length; i++) {
+      var args = log[i];
+      alert(args.join());
+    }
   }
 
   window.run = runTask_1;
