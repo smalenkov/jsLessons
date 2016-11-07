@@ -7,7 +7,7 @@
 
     // прибавит время выполнения f к таймеру timers[timer]
     function timingDecorator(f, timer) {
-      return function() {
+      return function () {
         var start = performance.now();
 
         var result = f.apply(this, arguments); // (*)
@@ -48,7 +48,7 @@
     // декоратор, проверяющий типы для f
     // второй аргумент checks - массив с функциями для проверки
     function typeCheck(f, checks) {
-      return function() {
+      return function () {
         for (var i = 0; i < arguments.length; i++) {
           if (!checks[i](arguments[i])) {
             alert("Некорректный тип аргумента номер " + i);
@@ -82,9 +82,10 @@
     function isAdmin() {
       return true;
     }
+
     // вспомогательная функция для проверки на число
     function checkPermissionDecorator(f) {
-      return function() {
+      return function () {
         if (isAdmin()) {
           return f.apply(this, arguments);
         }
@@ -125,11 +126,44 @@
     work(1, 2);
     work(4, 6);
 
-    for (var i=0; i < log.length; i++) {
+    for (var i = 0; i < log.length; i++) {
       var args = log[i];
       alert(args.join());
     }
   }
 
-  window.run = runTask_1;
+  // Задача 2
+
+  function runTask_2() {
+
+    function f(x) {
+      return Math.random() * x; // random для удобства тестирования
+    }
+
+
+    function makeCaching(f) {
+      var cache = {};
+      return function(x) {
+        if(!(x in cache)) {
+          cache[x] = f.call(this, x);
+        }
+        return cache[x];
+      }
+    }
+
+    f = makeCaching(f);
+
+    var a, b;
+
+    a = f(1);
+    b = f(1);
+    alert(a == b); // true (значение закешировано)
+
+    b = f(2);
+    alert(a == b); // false, другой аргумент => другое значение
+
+  }
+
+
+  window.run = runTask_2;
 })();
