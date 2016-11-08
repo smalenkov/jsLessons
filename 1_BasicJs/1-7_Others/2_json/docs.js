@@ -3,11 +3,12 @@
   // Пример 1
 
   function runDoc_1() {
-    var numbers = "[0, 1, 2, 3]";
+    var user = '{ "name": "Вася", "age": 35, "isAdmin": false, "friends": [0,1,2,3] }';
 
-    numbers = JSON.parse(numbers);
+    user = JSON.parse(user);
 
-    alert( numbers[1] ); // 1
+    alert(user.friends[3]); // 1
+    alert(user.name); // 1
   }
 
   window.run = runDoc_1;
