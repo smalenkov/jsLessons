@@ -115,7 +115,7 @@
     var teamStr = JSON.stringify(team);
 
     team.toJSON = function() {
-      return this.leader2;
+      return this.leader;
     };
 
     alert(teamStr);
