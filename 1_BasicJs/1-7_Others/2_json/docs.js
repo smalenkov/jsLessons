@@ -93,17 +93,11 @@
 
   function runTask_2() {
     var leader = {
-      name: "Василий Иванович",
-      toJSON: function() {
-        return soldier
-      }
+      name: "Василий Иванович"
     };
 
     var soldier = {
-      name: "Петька",
-      toJSON: function() {
-        return this
-      }
+      name: "Петька"
     };
 
     // эти объекты ссылаются друг на друга!
@@ -112,12 +106,12 @@
 
     var team = [leader, soldier];
 
-    var teamStr = JSON.stringify(team);
-
     team.toJSON = function() {
-      return this.leader;
+      /* свой код, который может создавать копию объекта без круговых ссылок и передавать управление JSON.stringify */
+      return "свой код, который может создавать копию объекта без круговых ссылок и передавать управление JSON.stringify"
     };
 
+    var teamStr = JSON.stringify(team);
     alert(teamStr);
   }
 
