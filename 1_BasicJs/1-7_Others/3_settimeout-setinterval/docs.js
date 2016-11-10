@@ -27,7 +27,7 @@
     func();
   }
 
-  // Пример 2
+  // Пример 3
 
   function runDoc_3() {
     for (var i=0; i<10; i++) {
@@ -37,5 +37,20 @@
     }
   }
 
-  window.run = runDoc_3;
+
+  // Пример 4
+
+  function runDoc_4() {
+    for (var i=0; i<2; i++) {
+      var timer = setTimeout(function(){
+        alert(i);
+      }, i*100);
+      alert(timer);
+      if (timer == 1) {
+        clearTimeout(timer);
+      }
+    }
+  }
+
+  window.run = runDoc_4;
 })();
