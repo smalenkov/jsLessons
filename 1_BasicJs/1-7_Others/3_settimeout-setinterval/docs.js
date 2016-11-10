@@ -27,5 +27,15 @@
     func();
   }
 
-  window.run = runDoc_2;
+  // Пример 2
+
+  function runDoc_3() {
+    for (var i=0; i<10; i++) {
+      setTimeout(function(){
+        alert(i);
+      }, i*1000)
+    }
+  }
+
+  window.run = runDoc_3;
 })();
