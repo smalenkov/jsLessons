@@ -215,5 +215,79 @@
 
   }
 
-  window.run = runTask_6;
+  // Задание 7
+
+  function runTask_7() {
+
+    function debounce(f, ms) {
+
+      var state = null;
+      var COOLDOWN = 1;
+
+      return function () {
+        if (state) return;
+
+        f.apply(this, arguments);
+
+        state = COOLDOWN;
+
+        setTimeout(function () { state = null }, ms);
+      }
+
+    }
+
+    function f(x) {
+      alert(x);
+    }
+
+    var f = debounce(f, 1000);
+
+    f(1); // выполнится сразу же
+    f(2); // игнор
+
+    setTimeout( function() { f(3) }, 100); // игнор (прошло только 100 мс)
+    setTimeout( function() { f(4) }, 1100); // выполнится
+    setTimeout( function() { f(5) }, 2300); // игнор
+
+  }
+
+
+  // Задание 7
+
+  function runTask_8() {
+
+    function throttle(f, ms) {
+
+      var state = null;
+      var COOLDOWN = 1;
+
+      return function () {
+        if (state) return;
+
+        f.apply(this, arguments);
+
+        state = COOLDOWN;
+
+        setTimeout(function () { state = null }, ms);
+      }
+
+    }
+
+    var f = function(a) {
+      console.log(a)
+    };
+
+    // затормозить функцию до одного раза в 1000 мс
+    var f1000 = throttle(f, 1000);
+
+    f1000(1); // выведет 1
+    f1000(2); // (тормозим, не прошло 1000 мс)
+    f1000(3); // (тормозим, не прошло 1000 мс)
+
+    // когда пройдёт 1000 мс...
+    // выведет 3, промежуточное значение 2 игнорируется
+
+  }
+
+  window.run = runTask_8;
 })();
