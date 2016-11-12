@@ -26,7 +26,6 @@
     function toArr(arr) {
 
       var arrFunc = [];
-      var arg = [];
 
       for (var i=0; i<arr.length; i++) {
         arg = arr[i]; // так работать не будет
