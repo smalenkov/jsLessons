@@ -14,14 +14,11 @@
           }
         })(i));
 
-        //arrFunc.push(func);
-
       }
       return arrFunc;
-      // alert(arrFunc);
     }
 
-    document.write(toArr([5,4,6,7]));
+    //document.write(toArr([5,4,6,7]));
     document.write(toArr([5,4,6,7])[1]());
   }
 
@@ -36,8 +33,8 @@
         // у каждой функции в массиве должен быть свой контекст с переменной, хранящей значение элемента массива в замыкании
         // у каждой вызываемой функции должно быть свое замыкание
         arrFunc.push(function () {
-          return arg; // выведет только последний элемент из входящего массива
-        });
+          return arg;
+        }); // выведет только последний элемент из входящего массива
 
       }
       return arrFunc;
@@ -47,5 +44,5 @@
     document.write(toArr([5,4,6,7])[1]());
   }
 
-  window.run = runTask_2;
+  window.run = runTask_1;
 })();
