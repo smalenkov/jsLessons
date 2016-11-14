@@ -1,5 +1,6 @@
 ;(function() {
 
+  // Задание 1
 
   function runTask_1() {
     function toArr(arr) {
@@ -22,6 +23,9 @@
     document.write(toArr([5,4,6,7])[1]());
   }
 
+
+  // Задание 2
+
   function runTask_2() {
     function toArr(arr) {
 
@@ -43,6 +47,9 @@
     document.write(toArr([5,4,6,7])[1]());
   }
 
+
+  // Задание 3
+
   function runTask_3() {
     var currentCount = 1;
 
@@ -61,6 +68,8 @@
     alert( counter2() ); // ?
     alert( counter2() ); // ?
   }
+
+  // Задание 4
 
   function runTask_4() {
 
@@ -89,5 +98,18 @@
   }
 
 
-  window.run = runTask_3;
+  // Задание 5
+
+  function runTask_5() {
+    say('Вася'); // Вася, undefined
+    var phrase = 'Привет';
+
+
+    function say(name) {
+      alert( name + ", " + phrase );
+    }
+  }
+
+
+  window.run = runTask_5;
 })();
