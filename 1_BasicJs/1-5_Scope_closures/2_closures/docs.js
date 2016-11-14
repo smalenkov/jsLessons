@@ -43,5 +43,47 @@
     document.write(toArr([5,4,6,7])[1]());
   }
 
-  window.run = runTask_1;
+  function runTask_3() {
+    var currentCount = 1;
+
+    function makeCounter() {
+      return function() {
+        return currentCount++;
+      };
+    }
+
+    var counter = makeCounter();
+    var counter2 = makeCounter();
+
+    alert( counter() ); // ?
+    alert( counter() ); // ?
+
+    alert( counter2() ); // ?
+    alert( counter2() ); // ?
+  }
+
+  function runTask_4() {
+
+    function makeCounter() {
+      var currentCount = 1;
+
+      return function() { // (**)
+        return currentCount++;
+      };
+    }
+
+    var counter = makeCounter(); // (*)
+
+    // каждый вызов увеличивает счётчик и возвращает результат
+    alert( counter() ); // 1
+    alert( counter() ); // 2
+    alert( counter() ); // 3
+
+    // создать другой счётчик, он будет независим от первого
+    var counter2 = makeCounter();
+    alert( counter2() ); // 1
+  }
+
+
+  window.run = runTask_3;
 })();
