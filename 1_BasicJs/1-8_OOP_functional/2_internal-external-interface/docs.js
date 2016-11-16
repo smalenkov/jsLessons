@@ -4,17 +4,19 @@
 
   function runDoc_1() {
 
-    function CoffeeMachine(power) {
-      this.waterAmount = 0; // количество воды в кофеварке
+    function Auto(mark, horsePower) {
+      this.mark = mark; // лошадиные силы
+      this.horsePower = horsePower; // лошадиные силы
+      this.speed = 0; // лошадиные силы
 
-      alert( 'Создана кофеварка мощностью: ' + power + ' ватт' );
+      document.write( 'Создана машина марки ' +  this.mark + '  мощностью: ' + this.horsePower + ' л.с.' );
     }
 
-    // создать кофеварку
-    var coffeeMachine = new CoffeeMachine(100);
+    // создать авто
+    var auto = new Auto('BMW', 116);
 
-    // залить воды
-    coffeeMachine.waterAmount = 200;
+    auto.speed = 140;
+    document.write(' Скорость авто ' + auto.speed);
 
   }
 
