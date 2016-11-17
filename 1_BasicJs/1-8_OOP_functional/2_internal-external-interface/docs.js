@@ -6,9 +6,9 @@
 
     // mark, horsePower — приватные (локальные) свойства. Доступны только внутри
     function Auto(mark, horsePower) {
-      this.mark = mark; // лошадиные силы
-      this.horsePower = horsePower; // лошадиные силы
       this.speed = 0; // скорость
+
+      var MAX_SPEED = 240;
 
       // приватные методы (вложенные функции)
       // рассчет времени разгона
@@ -27,7 +27,7 @@
         setTimeout(onReady, getSpeedTime())
       };
 
-      document.write( 'Создана машина марки ' +  this.mark + '  мощностью: ' + this.horsePower + ' л.с.' );
+      document.write( 'Создана машина марки ' +  mark + '  мощностью: ' + horsePower + ' л.с.' );
     }
 
     // создать авто
@@ -35,6 +35,7 @@
 
     auto.speed = 140;
     document.write(' Скорость авто ' + auto.speed);
+    auto.speed = 140;
 
     auto.go();
 
