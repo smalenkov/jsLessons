@@ -26,10 +26,15 @@
         alert('Ой-ой притормози, чувачок! Твоя скорость уже ' + this.speed);
       }.bind(this);
 
+      var timerId;
 
       // go — публичный метод (доступен из вне)
       this.go = function() {
-        setTimeout(onReady, getSpeedTime())
+        timerId = setTimeout(onReady, getSpeedTime());
+      };
+
+      this.stop = function() {
+        clearTimeout(timerId);
       };
 
       document.write( 'Создана машина марки ' +  mark + '  мощностью: ' + horsePower + ' л.с.' );
@@ -42,6 +47,7 @@
     document.write(' Скорость авто ' + auto.speed);
 
     auto.go();
+    auto.stop();
 
   }
 
