@@ -26,13 +26,13 @@
       var thisObj = this;
 
       function onReady() {
-        alert('Ой-ой притормози, чувачок! Твоя скорость уже ' + thisObj.speed);
+        alert('Ой-ой притормози, чувачок! Твоя скорость уже ' + this.speed);
       }
 
 
       // go — публичный метод (доступен из вне)
       this.go = function() {
-        setTimeout(onReady, getSpeedTime.call(this))
+        setTimeout(onReady.bind(this), getSpeedTime.call(this))
       };
 
       document.write( 'Создана машина марки ' +  mark + '  мощностью: ' + horsePower + ' л.с.' );
@@ -41,8 +41,8 @@
     // создать авто
     var auto = new Auto('BMW', 116);
 
+    auto.speed = prompt("Какая скорость?");
     document.write(' Скорость авто ' + auto.speed);
-    auto.speed = 140;
 
     auto.go();
 
