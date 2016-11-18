@@ -16,22 +16,20 @@
 
       // приватные методы (вложенные функции)
       // рассчет времени разгона (формула выдуманная)
-      function getSpeedTime() {
+      var getSpeedTime = function() {
         return this.speed / MAX_SPEEDUP * horsePower;
-      }
+      }.bind(this);
 
       // приватные методы (вложенные функции)
       // по достижению нужной скорости
-      var thisObj = this;
-
-      function onReady() {
+      var onReady = function onReady() {
         alert('Ой-ой притормози, чувачок! Твоя скорость уже ' + this.speed);
-      }
+      }.bind(this);
 
 
       // go — публичный метод (доступен из вне)
       this.go = function() {
-        setTimeout(onReady.bind(this), getSpeedTime.call(this))
+        setTimeout(onReady, getSpeedTime())
       };
 
       document.write( 'Создана машина марки ' +  mark + '  мощностью: ' + horsePower + ' л.с.' );
