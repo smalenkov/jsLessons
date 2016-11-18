@@ -17,7 +17,6 @@
       // приватные методы (вложенные функции)
       // рассчет времени разгона (формула выдуманная)
       function getSpeedTime() {
-        console.log(this.speed / MAX_SPEEDUP * horsePower);
         return this.speed / MAX_SPEEDUP * horsePower;
       }
 
