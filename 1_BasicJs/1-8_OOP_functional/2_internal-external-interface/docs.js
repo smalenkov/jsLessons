@@ -33,6 +33,7 @@
         timerId = setTimeout(onReady, getSpeedTime()); // Получаем ID таймера для возможности остановки
       };
 
+      // Функция остановки
       this.stop = function() {
         clearTimeout(timerId);
       };
