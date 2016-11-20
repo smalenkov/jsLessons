@@ -30,7 +30,7 @@
 
       // go — публичный метод (доступен из вне)
       this.go = function() {
-        timerId = setTimeout(onReady, getSpeedTime());
+        timerId = setTimeout(onReady, getSpeedTime()); // Получаем ID таймера для возможности остановки
       };
 
       this.stop = function() {
