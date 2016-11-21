@@ -22,7 +22,7 @@
 
       // приватные методы (вложенные функции)
       // по достижению нужной скорости
-      var onReady = function onReady() {
+      var onReady = function() {
         alert('Ой-ой притормози, чувачок! Твоя скорость уже ' + this.speed);
       }.bind(this);
 
