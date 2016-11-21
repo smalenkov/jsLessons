@@ -69,5 +69,37 @@
 
   }
 
-  window.run = runDoc_1;
+  // Пример 1
+
+  function runTask_1() {
+
+    function User() {
+
+      var firstName;
+      var surname;
+
+      this.setFirstName = function(amount) {
+        firstName = amount;
+      };
+
+      this.setSurname = function(amount) {
+        surname = amount;
+      };
+
+      this.getFullName = function() {
+        return firstName + ' ' + surname;
+      };
+
+    }
+
+    var user = new User();
+    user.setFirstName('Михаил');
+    user.setSurname('Петров');
+
+    var fullname = user.getFullName();
+    document.write(fullname);
+
+  }
+
+  window.run = runTask_1;
 })();
