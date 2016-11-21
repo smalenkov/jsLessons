@@ -184,5 +184,61 @@
 
   }
 
-  window.run = runTask_3;
+  function runTask_4() {
+
+    var coffeeMachine = new CoffeeMachine(20000, 500);
+
+    function CoffeeMachine(power, capacity) {
+      var waterAmount = 0;
+
+      var WATER_HEAT_CAPACITY = 4200;
+
+      function getTimeToBoil() {
+        return waterAmount * WATER_HEAT_CAPACITY * 80 / power;
+      }
+
+      this.setWaterAmount = function(amount) {
+        if (amount < 0) {
+          throw new Error("Значение должно быть положительным");
+        }
+        if (amount > capacity) {
+          throw new Error("Нельзя залить больше, чем " + capacity);
+        }
+
+        waterAmount = amount;
+      };
+
+      this.getWaterAmount = function() {
+        return waterAmount;
+      };
+
+      //var onReady = function() {
+      //  alert( 'Кофе готов!' );
+      //};
+
+      function onReady() {
+        alert( 'Кофе готов!' );
+      };
+
+      this.setOnReady = function(amount) {
+        onReady = amount;
+      };
+
+      this.run = function() {
+        setTimeout(onReady, getTimeToBoil());
+      };
+
+    }
+    coffeeMachine.setWaterAmount(300);
+
+    coffeeMachine.setOnReady(function() {
+      var amount = coffeeMachine.getWaterAmount();
+      alert( 'Готов кофе: ' + amount + 'мл' ); // Кофе готов: 150 мл
+    });
+
+    coffeeMachine.run();
+
+  }
+
+  window.run = runTask_4;
 })();
