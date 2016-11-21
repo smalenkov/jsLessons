@@ -69,7 +69,7 @@
 
   }
 
-  // Пример 1
+  // Задание 1
 
   function runTask_1() {
 
@@ -102,7 +102,7 @@
   }
 
 
-  // Пример 2
+  // Задание 2
 
   function runTask_2() {
 
@@ -134,8 +134,55 @@
 
     document.write(power);
 
+  }
+
+
+  // Задание 3
+
+  function runTask_3() {
+
+    function CoffeeMachine(power, capacity) {
+      var waterAmount = 0;
+
+      var WATER_HEAT_CAPACITY = 4200;
+
+      function getTimeToBoil() {
+        return waterAmount * WATER_HEAT_CAPACITY * 80 / power;
+      }
+
+      this.setWaterAmount = function(amount) {
+        if (amount < 0) {
+          throw new Error("Значение должно быть положительным");
+        }
+        if (amount > capacity) {
+          throw new Error("Нельзя залить больше, чем " + capacity);
+        }
+
+        waterAmount = amount;
+      };
+
+      function onReady() {
+        alert( 'Кофе готов!' );
+      }
+
+      this.addWater = function(amount) {
+        waterAmount += amount;
+        this.setWaterAmount(waterAmount);
+      };
+
+      this.run = function() {
+        setTimeout(onReady, getTimeToBoil());
+      };
+
+    }
+
+    var coffeeMachine = new CoffeeMachine(100000, 400);
+    coffeeMachine.addWater(200);
+    coffeeMachine.addWater(100);
+    coffeeMachine.addWater(200); // Нельзя залить больше, чем 400
+    coffeeMachine.run();
 
   }
 
-  window.run = runTask_2;
+  window.run = runTask_3;
 })();
