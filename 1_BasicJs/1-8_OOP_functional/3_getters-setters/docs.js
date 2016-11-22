@@ -186,10 +186,12 @@
 
   function runTask_4() {
 
-    var coffeeMachine = new CoffeeMachine(20000, 500);
-
     function CoffeeMachine(power, capacity) {
       var waterAmount = 0;
+
+      var timerId;
+
+      timerId = 0;
 
       var WATER_HEAT_CAPACITY = 4200;
 
@@ -221,18 +223,31 @@
       };
 
       this.run = function() {
-        setTimeout(function() { onReady() }, getTimeToBoil());
+        timerId = setTimeout(function() { onReady() }, getTimeToBoil());
+      };
+
+      this.isRunning = function() {
+        if (timerId != 0) {
+          timerId = 0;
+          return true
+        } else {
+          return false
+        }
       };
 
     }
-    coffeeMachine.setWaterAmount(300);
 
-    coffeeMachine.setOnReady(function() {
-      var amount = coffeeMachine.getWaterAmount();
-      alert( 'Кофе опять готов: ' + amount + 'мл' ); // Кофе готов: 150 мл
-    });
+    var coffeeMachine = new CoffeeMachine(20000, 500);
+    coffeeMachine.setWaterAmount(100);
+
+    alert( 'До: ' + coffeeMachine.isRunning() ); // До: false
 
     coffeeMachine.run();
+    alert( 'В процессе: ' + coffeeMachine.isRunning() ); // В процессе: true
+
+    coffeeMachine.setOnReady(function() {
+      alert( "После: " + coffeeMachine.isRunning() ); // После: false
+    });
 
   }
 
