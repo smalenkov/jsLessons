@@ -189,9 +189,7 @@
     function CoffeeMachine(power, capacity) {
       var waterAmount = 0;
 
-      var timerId;
-
-      timerId = 0;
+      var timerId = null;
 
       var WATER_HEAT_CAPACITY = 4200;
 
@@ -223,12 +221,14 @@
       };
 
       this.run = function() {
-        timerId = setTimeout(function() { onReady() }, getTimeToBoil());
+        timerId = setTimeout(function() {
+          timerId = null;
+          onReady();
+        }, getTimeToBoil());
       };
 
       this.isRunning = function() {
-        if (timerId != 0) {
-          timerId = 0;
+        if (timerId) {
           return true
         } else {
           return false
