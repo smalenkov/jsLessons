@@ -212,20 +212,16 @@
         return waterAmount;
       };
 
-      //var onReady = function() {
-      //  alert( 'Кофе готов!' );
-      //};
-
       function onReady() {
         alert( 'Кофе готов!' );
-      };
+      }
 
       this.setOnReady = function(amount) {
         onReady = amount;
       };
 
       this.run = function() {
-        setTimeout(onReady, getTimeToBoil());
+        setTimeout(function() { onReady() }, getTimeToBoil());
       };
 
     }
@@ -233,7 +229,7 @@
 
     coffeeMachine.setOnReady(function() {
       var amount = coffeeMachine.getWaterAmount();
-      alert( 'Готов кофе: ' + amount + 'мл' ); // Кофе готов: 150 мл
+      alert( 'Кофе опять готов: ' + amount + 'мл' ); // Кофе готов: 150 мл
     });
 
     coffeeMachine.run();
