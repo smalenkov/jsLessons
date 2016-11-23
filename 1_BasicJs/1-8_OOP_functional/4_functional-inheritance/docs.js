@@ -5,14 +5,14 @@
   function runDoc_1() {
 
     function Machine() {
-      var enabled = false;
+      this._enabled = false; // Внутреннее свойство и перед ним ставится «_»
 
       this.enable = function() {
-        enabled = true;
+        this._enabled = true;
       };
 
       this.disable = function() {
-        enabled = false;
+        this._enabled = false;
       };
     }
 
@@ -27,7 +27,11 @@
 
       this.getWaterAmount = function() {
         return waterAmount;
-      }
+      };
+
+      this.enable();
+
+      alert(this._enabled);
 
     }
 
