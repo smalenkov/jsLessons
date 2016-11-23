@@ -77,6 +77,7 @@
       Machine.apply(this, arguments); // отнаследовать
 
       var waterAmount = 0;
+      var timerId;
 
       this.setWaterAmount = function(amount) {
         waterAmount = amount;
@@ -90,14 +91,20 @@
         alert('Кофе готов!');
       }
 
+      var parentDisable = this.disable;
+
+      this.disable = function() {
+        parentDisable();
+        clearTimeout(timerId);
+      };
+
       this.run = function () {
         if (!this._enabled) {
           throw new Error('Сначала включии ее :)');
         }
 
-        setTimeout(onReady, 1000);
+        timerId = setTimeout(onReady, 1000);
       };
-
 
     }
 
@@ -106,7 +113,8 @@
 
     var coffeeMachine2 = new CoffeeMachine(10000);
     coffeeMachine2.enable();
-    coffeeMachine2.run(); // ...Кофе готов!
+    coffeeMachine2.run();
+    coffeeMachine2.disable(); // остановит работу, ничего не выведет
 
   }
 
