@@ -4,7 +4,8 @@
 
   function runDoc_1() {
 
-    function Machine() {
+    function Machine(power) {
+      this._power = power;
       this._enabled = false; // Внутреннее свойство и перед ним ставится «_»
 
       this.enable = function() {
@@ -17,7 +18,7 @@
     }
 
     function CoffeeMachine(power) {
-      Machine.call(this); // отнаследовать
+      Machine.apply(this, arguments); // отнаследовать
 
       var waterAmount = 0;
 
@@ -29,9 +30,17 @@
         return waterAmount;
       };
 
-      this.enable();
+      this.run = function () {
+        document.write(this._power);
+        document.write('<br> Поехали!');
+      };
 
-      alert(this._enabled);
+      var parentEnable = this.enable;
+
+      this.enable = function () {
+        parentEnable();
+        this.run();
+      };
 
     }
 
@@ -41,7 +50,7 @@
     coffeeMachine.setWaterAmount(120);
     coffeeMachine.disable();
 
-    document.write(coffeeMachine.getWaterAmount());
+    document.write('<br>' + coffeeMachine.getWaterAmount());
 
   }
 
