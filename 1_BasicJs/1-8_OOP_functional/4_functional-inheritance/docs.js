@@ -141,21 +141,39 @@
 
       var food = [];
 
+      var maxProducts = function () {
+        return power / 100;
+      };
+
       this.addFood = function(item) {
-        food.push(item);
+        if (!this._enabled) {
+          throw new Error('Холодильник не включен')
+        }
+        if ((food.length + arguments.length) <= maxProducts()) {
+          [].push.apply(food, arguments);
+        } else {
+          throw new Error('Столько продуктов не влезет')
+        }
       };
 
       this.getFood = function() {
-        return food;
+        return food.slice();
       };
     }
 
-    var fridge = new Fridge(200);
-    fridge.addFood('Колбаска');
+    var fridge = new Fridge(600);
+    fridge.enable();
+    fridge.addFood('Колбаска', 'Майонез');
     fridge.addFood('Сырок');
+    fridge.addFood('Сливки', 'Сосиски', 'Молоко');
     var inFridle = fridge.getFood();
 
     console.log(inFridle);
+
+    // добавление элементов не влияет на еду в холодильнике
+    inFridle.push("вилка", "ложка");
+
+    alert( fridge.getFood() ); // внутри по-прежнему: котлета, сок, варенье
 
   }
 
