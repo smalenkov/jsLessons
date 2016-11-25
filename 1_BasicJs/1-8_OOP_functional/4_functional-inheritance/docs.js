@@ -166,6 +166,7 @@
     fridge.addFood('Колбаска', 'Майонез');
     fridge.addFood('Сырок');
     fridge.addFood('Сливки', 'Сосиски', 'Молоко');
+
     var inFridle = fridge.getFood();
 
     console.log(inFridle);
@@ -173,9 +174,96 @@
     // добавление элементов не влияет на еду в холодильнике
     inFridle.push("вилка", "ложка");
 
-    alert( fridge.getFood() ); // внутри по-прежнему: котлета, сок, варенье
+    console.log(fridge.getFood()); // внутри по-прежнему: котлета, сок, варенье
 
   }
 
-  window.run = runTask_2;
+
+  // Задание 3
+
+  function runTask_3() {
+
+    function Machine(power) {
+      this._power = power;
+      this._enabled = false; // Внутреннее свойство и перед ним ставится «_»
+
+      this.enable = function() {
+        this._enabled = true;
+      };
+
+      this.disable = function() {
+        this._enabled = false;
+      };
+    }
+
+    function Fridge(power) {
+      Machine.apply(this, arguments);
+
+      var food = [];
+
+      var maxProducts = function() {
+        return power / 100;
+      };
+
+      this.addFood = function(item) {
+        if (!this._enabled) {
+          throw new Error('Холодильник не включен')
+        }
+        if ((food.length + arguments.length) <= maxProducts()) {
+          [].push.apply(food, arguments);
+        } else {
+          throw new Error('Столько продуктов не влезет')
+        }
+      };
+
+      this.getFood = function() {
+        return food.slice();
+      };
+
+      this.filterFood = function(func) {
+        return food.filter(func);
+      }
+    }
+
+    var fridge = new Fridge(500);
+    fridge.enable();
+    fridge.addFood({
+      title: "котлета",
+      calories: 100
+    });
+    fridge.addFood({
+      title: "сок",
+      calories: 30
+    });
+    fridge.addFood({
+      title: "зелень",
+      calories: 10
+    });
+    fridge.addFood({
+      title: "варенье",
+      calories: 150
+    });
+
+    //fridge.removeFood("нет такой еды"); // без эффекта
+    //console.log(fridge.getFood().length); // 4
+
+    var dietItems = fridge.filterFood(function(item, i, arr) {
+      //document.write(item.calories);
+      console.log(i);
+      console.log(arr);
+      return item.calories < 50;
+    });
+
+    console.log(dietItems);
+
+    //dietItems.forEach(function(item) {
+    //  console.log(item.title); // сок, зелень
+    //  fridge.removeFood(item);
+    //});
+    //
+    //console.log(fridge.getFood().length); // 2
+
+  }
+
+  window.run = runTask_3;
 })();
