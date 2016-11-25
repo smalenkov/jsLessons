@@ -118,5 +118,46 @@
 
   }
 
-  window.run = runTask_1;
+
+  // Задание 2
+
+  function runTask_2() {
+
+    function Machine(power) {
+      this._power = power;
+      this._enabled = false; // Внутреннее свойство и перед ним ставится «_»
+
+      this.enable = function () {
+        this._enabled = true;
+      };
+
+      this.disable = function () {
+        this._enabled = false;
+      };
+    }
+
+    function Fridge(power) {
+      Machine.apply(this, arguments);
+
+      var food = [];
+
+      this.addFood = function(item) {
+        food.push(item);
+      };
+
+      this.getFood = function() {
+        return food;
+      };
+    }
+
+    var fridge = new Fridge(200);
+    fridge.addFood('Колбаска');
+    fridge.addFood('Сырок');
+    var inFridle = fridge.getFood();
+
+    console.log(inFridle);
+
+  }
+
+  window.run = runTask_2;
 })();
