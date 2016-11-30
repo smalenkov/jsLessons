@@ -217,11 +217,17 @@
       };
 
       this.getFood = function() {
-        return food.slice();
+        return food;
       };
 
       this.filterFood = function(func) {
         return food.filter(func);
+      };
+
+      this.removeFood = function(item) {
+        if (typeof item == 'object') {
+          food.splice(food.indexOf(item), 1);
+        }
       }
     }
 
@@ -244,24 +250,20 @@
       calories: 150
     });
 
-    //fridge.removeFood("нет такой еды"); // без эффекта
-    //console.log(fridge.getFood().length); // 4
+    fridge.removeFood("нет такой еды"); // без эффекта
+    console.log(fridge.getFood().length); // 4
 
-    var dietItems = fridge.filterFood(function(item, i, arr) {
-      //document.write(item.calories);
-      console.log(i);
-      console.log(arr);
+    var dietItems = fridge.filterFood(function(item) {
       return item.calories < 50;
     });
 
     console.log(dietItems);
 
-    //dietItems.forEach(function(item) {
-    //  console.log(item.title); // сок, зелень
-    //  fridge.removeFood(item);
-    //});
-    //
-    //console.log(fridge.getFood().length); // 2
+    dietItems.forEach(function(item) {
+      fridge.removeFood(item);
+    });
+
+    console.log(fridge.getFood().length); // 2
 
   }
 
