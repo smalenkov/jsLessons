@@ -7,11 +7,7 @@
     var i = 1;
 
     var promise = new Promise((resolve, reject) => {
-        if (i) {
-          resolve();
-        } else {
-          reject();
-        }
+        if (i) resolve(); else reject();
       });
 
     function yes() {
