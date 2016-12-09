@@ -30,10 +30,10 @@
   function runDoc_3() {
 
     String.prototype.repeat = function(parts) {
-      return 'Повторитель ' + this;
+      return new Array(parts+1).join(this);
     };
 
-    var repeater = 'Ля-ля-фа'.repeat();
+    var repeater = 'Ля-ля-фа'.repeat(3);
     document.write(repeater);
 
   }
