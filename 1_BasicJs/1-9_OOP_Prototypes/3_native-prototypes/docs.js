@@ -24,5 +24,19 @@
 
   }
 
-  window.run = runDoc_2;
+
+  // Пример 3 (repeater)
+
+  function runDoc_3() {
+
+    String.prototype.repeat = function(parts) {
+      return 'Повторитель ' + this;
+    };
+
+    var repeater = 'Ля-ля-фа'.repeat();
+    document.write(repeater);
+
+  }
+
+  window.run = runDoc_3;
 })();
