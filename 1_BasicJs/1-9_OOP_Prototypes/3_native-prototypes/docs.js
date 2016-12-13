@@ -57,13 +57,36 @@
       age: 32
     };
 
-    user.each(function(prop) {
-      //document.write(one);
-      //document.write(two);
+    var eachFunc = function(prop) {
       document.write(prop + ': ' + this + '<br>');
-    })
+    };
+
+    user.each(eachFunc);
 
   }
 
-  window.run = runDoc_4;
+
+  // Задачка 1
+
+  function runTask_1() {
+
+    function f(name, lastname) {
+      document.write(name + ' ' + lastname);
+    }
+
+    Function.prototype.defer = function(ms) {
+      var f = this;
+      return function() {
+        var arg = arguments;
+        setTimeout(function() {
+          f.apply(f, arg)
+        }, ms);
+      };
+    };
+
+    f.defer(2000)('Михаил', 'Круг');
+
+  }
+
+  window.run = runTask_1;
 })();
