@@ -38,5 +38,32 @@
 
   }
 
-  window.run = runDoc_3;
+
+  // Пример 4 (each)
+
+  function runDoc_4() {
+
+    Object.prototype.each = function(f) {
+      for (var prop in this) {
+        value = this[prop];
+        if (this.hasOwnProperty(prop)) {
+          f.call(value, prop);
+        }
+      }
+    };
+
+    var user = {
+      name: "Василий",
+      age: 32
+    };
+
+    user.each(function(prop) {
+      //document.write(one);
+      //document.write(two);
+      document.write(prop + ': ' + this + '<br>');
+    })
+
+  }
+
+  window.run = runDoc_4;
 })();
