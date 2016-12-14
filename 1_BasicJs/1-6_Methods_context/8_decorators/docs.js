@@ -5,7 +5,7 @@
   function runDoc_1() {
     var timers = {};
 
-    // прибавит время выполнения f к таймеру timers[timer]
+    // прибавит время выполнения f к таймеру timers[_timer]
     function timingDecorator(f, timer) {
       return function () {
         var start = performance.now();
