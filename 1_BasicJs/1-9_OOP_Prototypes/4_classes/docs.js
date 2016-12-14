@@ -35,23 +35,23 @@
 
     function CoffeeMachine(power) {
       this._power = power;
-      this.waterAmount = 0;
-
-      this.WATER_HEAT_CAPACITY = 4200;
-
-      this.getTimeToBoil = function() {
-        return this.waterAmount * this.WATER_HEAT_CAPACITY * 80 / this._power;
-      };
+      this._waterAmount = 0;
     }
+
+    CoffeeMachine.prototype._getTimeToBoil = function() {
+      return this._waterAmount * this.WATER_HEAT_CAPACITY * 80 / this._power;
+    };
+
+    CoffeeMachine.prototype.WATER_HEAT_CAPACITY = 4200;
 
     CoffeeMachine.prototype.run = function() {
       setTimeout(function() {
         alert('Кофе готов!');
-      }, this.getTimeToBoil());
+      }, this._getTimeToBoil());
     };
 
     CoffeeMachine.prototype.setWaterAmount = function(amount) {
-      this.waterAmount = amount;
+      this._waterAmount = amount;
     };
 
     var coffeeMachine = new CoffeeMachine(10000);
@@ -60,5 +60,31 @@
 
   }
 
-  window.run = runTask_1;
+
+  // Задание 2
+
+  function runTask_2() {
+
+    function Hamster() {
+      this.food = [];
+    }
+
+    Hamster.prototype.found = function(something) {
+      this.food.push(something);
+    };
+
+    // Создаём двух хомяков и кормим первого
+    var speedy = new Hamster();
+    var lazy = new Hamster();
+
+    speedy.found("яблоко");
+    speedy.found("орех");
+    lazy.found("морковь");
+
+    alert( speedy.food.length ); // 2
+    alert( lazy.food.length ); // 2 (!??)
+
+  }
+
+  window.run = runTask_2;
 })();
