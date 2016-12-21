@@ -4,9 +4,9 @@
 
   function runDoc_1() {
 
-
+    window.open('http://ya.ru');
 
   }
 
-  window.run = runTask_2;
+  window.run = runDoc_1;
 })();
