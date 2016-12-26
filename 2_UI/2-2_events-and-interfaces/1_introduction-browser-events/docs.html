@@ -7,11 +7,20 @@
 </head>
 <body>
 
-  <!--<script type="text/javascript">-->
-    <!--run();-->
-  <!--</script>-->
+  <script type="text/javascript">
+//    run();
+  </script>
 
   <input type="button" onclick="run()" value="Считать кроликов!">
+
+  <input type="button" id="rabbits-button" value="через свойство">
+
+  <script type="text/javascript">
+    var elem = document.getElementById('rabbits-button');
+    elem.onclick = function() {
+      alert('Hello rabbit!')
+    };
+  </script>
 
 </body>
 </html>

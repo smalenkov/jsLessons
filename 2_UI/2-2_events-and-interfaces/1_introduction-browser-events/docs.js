@@ -10,5 +10,14 @@
 
   }
 
-  window.run = runDoc_1;
+  function runDoc_2 {
+
+    var elem = document.getElementById('rabbits-button');
+    elem.onclick = function() {
+      alert('Hello rabbit!')
+    };
+
+  }
+
+  window.run = runDoc_2;
 })();
