@@ -10,14 +10,43 @@
 
   }
 
-  function runDoc_2 {
+  // events throught property
+
+  function runDoc_2() {
 
     var elem = document.getElementById('rabbits-button');
     elem.onclick = function() {
-      alert('Hello rabbit!')
+      alert('Hello!')
     };
+
+    function sayHi() {
+      this.value = 'Запустилось';
+      alert('Hi!');
+    }
+
+    elem.onclick = sayHi;
 
   }
 
-  window.run = runDoc_2;
+
+  // addEventListener and removeEventListener
+
+  function runDoc_3() {
+
+    var elem = document.getElementById('rabbits-button');
+    elem.addEventListener("click", sayHi);
+    elem.addEventListener("mouseover", sayThinks);
+
+    function sayHi() {
+      alert('Hiiii!');
+    }
+
+    function sayThinks() {
+      this.value = "Запустилось!";
+      alert('Think you!');
+    }
+
+  }
+
+  window.run = runDoc_3;
 })();

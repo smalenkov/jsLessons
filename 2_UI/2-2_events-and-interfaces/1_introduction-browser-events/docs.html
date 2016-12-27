@@ -7,19 +7,31 @@
 </head>
 <body>
 
+  <div>
+    <h2>Назначение обработчиков через свойство</h2>
+
+    <p>Используя атрибут HTML
+      <xmp>
+        <input value="Нажми меня" onclick="alert('Клик!')" type="button">
+      </xmp></p>
+
+    <p>Использование свойства DOM-объекта
+      <xmp>
+        <input id="elem" type="button" value="Нажми меня" />
+        <script>
+          elem.onclick = function() {
+            alert( 'Спасибо' );
+          };
+        </script>
+      </xmp></p>
+  </div>
+
+  <hr style="background-color: #cccccc; height: 1px; border: 0; margin: 24px 0; width: 80%;">
+
+  <input type="button" onclick="run()" value="Загрузить обработчик" />
+  <input type="button" id="rabbits-button" value="Запустить" />
+
   <script type="text/javascript">
-//    run();
-  </script>
-
-  <input type="button" onclick="run()" value="Считать кроликов!">
-
-  <input type="button" id="rabbits-button" value="через свойство">
-
-  <script type="text/javascript">
-    var elem = document.getElementById('rabbits-button');
-    elem.onclick = function() {
-      alert('Hello rabbit!')
-    };
   </script>
 
 </body>
