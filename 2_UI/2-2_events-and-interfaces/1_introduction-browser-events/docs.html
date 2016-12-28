@@ -4,6 +4,59 @@
   <meta charset="UTF-8">
   <title>Введение в браузерные события</title>
   <script type="text/javascript" src="docs.js"></script>
+  <style>
+    .recbox {
+      width: 20px;
+      height: 30px;
+      margin-top: 8px;
+      transition: width 2s ease-out 0.5s, transform 2s ease-out 0.5s, background 2s ease-out 0.5s;
+      background-color: burlywood;
+    }
+
+    .widthplus {
+      width: 60px;
+      transform: rotate(180deg);
+    }
+
+    .newcolor {
+      background-color: red;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    hr {
+      background-color: #cccccc;
+      height: 1px;
+      border: 0;
+      margin: 24px 0;
+      width: 80%;
+    }
+
+    #menu-title {
+      font-size: 1.1em;
+    }
+
+    .animal-box {
+      position: relative;
+      width: 500px;
+      padding: 8px 16px;
+      background-color: rgba(1, 215, 250, 0.18);
+      border-top: 2px solid #e7d301;
+    }
+
+    .animal-box__list dd {
+      margin: 6px 0 0 0;
+    }
+
+    .close-button {
+      position: absolute;
+      right: 20px;
+      top: 14px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
@@ -26,12 +79,58 @@
       </xmp></p>
   </div>
 
-  <hr style="background-color: #cccccc; height: 1px; border: 0; margin: 24px 0; width: 80%;">
-
-  <input type="button" onclick="run()" value="Загрузить обработчик" />
+  <hr>
   <input type="button" id="rabbits-button" value="Запустить" />
+  <div id="recbox" class="recbox"></div>
+
+  <hr>
+  <h3>Задачка 1</h3>
+  <input type="button" name="" id="hidetextbutton" value="Спрятать текст">
+  <p id="text">Текст</p>
+
+  <hr>
+  <h3>Задачка 2</h3>
+  <input type="button" name="" id="hidebutton" value="Спрятаться">
+
+  <hr>
+  <h3>Задачка 3</h3>
+  <p id="menu-title">Конфетки</p>
+  <ul id="menu">
+    <li class="menu__elem">Коровка</li>
+    <li class="menu__elem">Грильяш</li>
+    <li class="menu__elem">Леденец</li>
+    <li class="menu__elem">Чупик</li>
+  </ul>
+
+  <hr>
+  <h3>Задачка 4</h3>
+  <div class="animal-box">
+    <dl class="animal-box__list">
+      <dt><strong>Лошадь</strong></dt>
+      <dd>Домашняя лошадь — животное семейства непарнокопытных, одомашненный и единственный сохранившийся подвид дикой лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</dd>
+    </dl>
+    <div class="close-button">[X]</div>
+  </div>
+  <div class="animal-box">
+    <dl class="animal-box__list">
+      <dt><strong>Осёл</strong></dt>
+      <dd>Домашний осёл или ишак — одомашненный подвид дикого осла, сыгравший важную историческую роль в развитии хозяйства и культуры человека. Все одомашненные ослы относятся к африканским ослам.</dd>
+    </dl>
+    <div class="close-button">[X]</div>
+  </div>
+  <div class="animal-box">
+    <dl class="animal-box__list">
+      <dt><strong>Корова, а также пара слов о диком быке, о волах и о тёлках.</strong></dt>
+      <dd>Коро́ва — самка домашнего быка, одомашненного подвида дикого быка, парнокопытного жвачного животного семейства полорогих. Самцы вида называются быками, молодняк — телятами, кастрированные самцы — волами. Молодых (до первой стельности) самок называют тёлками.</dd>
+    </dl>
+    <div class="close-button">[X]</div>
+  </div>
+
+  <hr>
+  <h3>Задачка 5 — Карусель</h3>
 
   <script type="text/javascript">
+    run();
   </script>
 
 </body>
