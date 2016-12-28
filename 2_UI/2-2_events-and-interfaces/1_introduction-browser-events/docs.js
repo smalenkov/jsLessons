@@ -101,6 +101,30 @@
       animalBox.classList.add('hide');
     }
 
+    var count = 3;
+    var widthOneCount = 200;
+
+    var nextBtn = document.getElementById('button-right');
+    var prevBtn = document.getElementById('button-left');
+    var contentBox = document.getElementById('slider-container__content-box');
+    var images = document.getElementsByClassName('slider-container__img-box');
+
+    prevBtn.addEventListener('click', stepPrev);
+    nextBtn.addEventListener('click', stepNext);
+
+    var position = 0;
+
+    function stepPrev() {
+      position = Math.min(position + widthOneCount * count, 0);
+      contentBox.style.marginLeft = position + 'px';
+    }
+
+    function stepNext() {
+      position = Math.max(position - widthOneCount * count, -widthOneCount * (images.length - count));
+      contentBox.style.marginLeft = position + 'px';
+    }
+
+
   }
 
   window.run = runTask_1;
