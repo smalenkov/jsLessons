@@ -1,10 +1,9 @@
 ;(function () {
 
-  var arr = [3, 1, 5, 9, 12, 55, 100, 23, 13, 97, 62, 31];
 
   // Сортировка пузырьком
 
-  function runSortBubble() {
+  function bubbleSort(arr) {
 
     for (var i = 0; i < arr.length; i++) {
       for (var j = arr.length - 1; j > i; j--) {
@@ -21,10 +20,25 @@
 
   }
 
+  function quickSort(arr) {
+
+    if (arr.length == 0) return [];
+    var a = [], b = [], p = arr[0];
+    for (var i = 1; i < arr.length; i++) {
+      if (arr[i] < p) a[a.length] = arr[i];
+      else b[b.length] = arr[i];
+    }
+    return quickSort(a).concat(p, quickSort(b));
+
+    document.write(arr);
+    document.write("<br> Длинна массива: " + arr.length);
+
+  }
+
 
   // Сортируем список
 
-  function runSortSelect() {
+  function runSelectSort() {
 
     var selectList = document.getElementById('city-select');
     var selectListOpt = selectList.options;
@@ -48,6 +62,7 @@
   }
 
 
-  window.sortBubble = runSortBubble;
-  window.sortSelect = runSortSelect;
+  window.runBubbleSort = bubbleSort;
+  window.runQuickSort = quickSort;
+  window.runSelectSort = runSelectSort;
 })();

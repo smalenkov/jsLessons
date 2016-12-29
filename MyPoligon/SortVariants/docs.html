@@ -37,8 +37,11 @@
   </div>
 
   <script type="text/javascript">
-    sortBubble();
-    sortSelect();
+    var arr = [3, 1, 5, 9, 12, 55, 100, 23, 13, 97, 62, 31];
+    var arrTwo = [3, 6, 5, 9, 12, 40, 55, 100];
+    runBubbleSort(arr);
+    document.write('<br>' + runQuickSort(arrTwo));
+    runSelectSort();
   </script>
 
 </body>
