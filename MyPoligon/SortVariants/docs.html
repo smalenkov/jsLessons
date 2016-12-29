@@ -4,11 +4,41 @@
   <meta charset="UTF-8">
   <title>Sorts</title>
   <script type="text/javascript" src="docs.js"></script>
+  <style>
+    .sity-select-box {
+      margin-bottom: 14px;
+      font-size: 1.4em;
+    }
+
+    #city-select {
+      width: 300px;
+    }
+
+    #city-select > option {
+      font-size: 1.4em;
+    }
+  </style>
 </head>
 <body>
 
+  <div class="sity-select-box">
+  <form action="">
+    <select name="" id="city-select" multiple>
+      <option value="1">Санкт-Петербург</option>
+      <option value="5">Москва</option>
+      <option value="2">Казань</option>
+      <option value="6">Новгород</option>
+      <option value="3">Тверь</option>
+      <option value="7">Курск</option>
+      <option value="4">Норвосибирск</option>
+      <option value="8">Самара</option>
+    </select>
+  </form>
+  </div>
+
   <script type="text/javascript">
-    run();
+    sortBubble();
+    sortSelect();
   </script>
 
 </body>
