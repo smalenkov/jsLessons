@@ -55,9 +55,9 @@
 
     optArr.sort(sortNum);
 
-    for (var i = 0; i < optArr.length; i++) {
-      selectListOpt[i] = optArr[i];
-    }
+    optArr.forEach(function(item, i) {
+      selectListOpt[i] = item;
+    })
 
   }
 
