@@ -8,6 +8,10 @@
     var elem = document.getElementById('push');
     var pastText = document.getElementById('past-text');
 
+    var inputFormLastname = document.getElementById('input-lastname');
+    var inputFormFathername = document.getElementById('input-fathername');
+    var inputFormName = document.getElementById('input-name');
+
     function sayClick() {
       pastText.innerHTML += "Click "
     }
@@ -28,12 +32,22 @@
       pastText.innerHTML += "MouseUp "
     }
 
+    function setFocusValue(text) {
+      return function () {
+        this.value = text;
+      };
+    }
+
     elem.addEventListener('click', sayClick);
     elem.addEventListener('mousedown', sayMouseDown);
     elem.addEventListener('mouseup', sayMouseUp);
 
     elem.addEventListener('mouseover', sayMouseOver);
     elem.addEventListener('mouseout', sayMouseOut);
+
+    inputFormName.addEventListener('focus', setFocusValue('hello Name'));
+    inputFormLastname.addEventListener('focus', setFocusValue('hello Lastname'));
+    inputFormFathername.addEventListener('focus', setFocusValue('hello Fathername'));
 
   }
 
