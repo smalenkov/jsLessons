@@ -14,6 +14,12 @@
     #past-text {
       width: 800px;
     }
+    .form-container {
+      margin: 6px 0;
+    }
+    #input-text {
+      width: 600px;
+    }
   </style>
 </head>
 <body>
@@ -22,7 +28,7 @@
     <h2>Порядок обработки событий</h2>
   </div>
 
-  <div id="form-container">
+  <div class="form-container">
     <form action="">
       <input type="text" id="input-name" name="name">
       <input type="text" id="input-lastname" name="lastname">
@@ -31,6 +37,13 @@
   </div>
 
   <div id="past-text"></div>
+
+  <div class="form-container">
+    <form action="">
+      <input type="button" id="input-button" value="Push me!">
+      <input type="text" id="input-text">
+    </form>
+  </div>
 
   <script type="text/javascript">
     run();
