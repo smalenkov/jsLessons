@@ -27,8 +27,25 @@
 
     function moveBall(e) {
       var coordGarden = garden.getBoundingClientRect();
-      ball.style.top = e.clientY - (coordGarden.top + garden.clientTop) - ballHeight/2 + 'px';
-      ball.style.left = e.clientX - (coordGarden.left + garden.clientLeft) - ballWidth/2 + 'px';
+      var ballTop = e.clientY - (coordGarden.top + garden.clientTop) - ballHeight/2;
+      var ballLeft = e.clientX - (coordGarden.left + garden.clientLeft) - ballWidth/2;
+      console.log(ballTop + ' ' + garden.offsetHeight);
+
+      if (ballTop < 0) {
+        ballTop = 0;
+      }
+
+      if (ballTop > garden.offsetHeight) {
+        ballTop = garden.offsetHeight + ballHeight;
+      }
+
+      if (ballLeft < 0) {
+        ballLeft = 0;
+      }
+
+      ball.style.top = ballTop + 'px';
+      ball.style.left = ballLeft + 'px';
+
     }
 
     garden.addEventListener('click', moveBall);
