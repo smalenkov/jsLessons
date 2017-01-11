@@ -22,9 +22,13 @@
 
     var ball = document.getElementById('ball');
     var garden = document.getElementById('garden');
+    var ballWidth = ball.offsetWidth;
+    var ballHeight = ball.offsetHeight;
 
     function moveBall(e) {
-      ball.style.top = e.clientY + 'px';
+      var coordGarden = garden.getBoundingClientRect();
+      ball.style.top = e.clientY - (coordGarden.top + garden.clientTop) - ballHeight/2 + 'px';
+      ball.style.left = e.clientX - (coordGarden.left + garden.clientLeft) - ballWidth/2 + 'px';
     }
 
     garden.addEventListener('click', moveBall);
