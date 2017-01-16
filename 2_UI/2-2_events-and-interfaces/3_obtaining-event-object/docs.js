@@ -29,18 +29,21 @@
       var coordGarden = garden.getBoundingClientRect();
       var ballTop = e.clientY - (coordGarden.top + garden.clientTop) - ballHeight/2;
       var ballLeft = e.clientX - (coordGarden.left + garden.clientLeft) - ballWidth/2;
-      console.log(ballTop + ' ' + garden.offsetHeight);
 
       if (ballTop < 0) {
         ballTop = 0;
       }
 
-      if (ballTop > garden.offsetHeight) {
-        ballTop = garden.offsetHeight + ballHeight;
+      if ((ballTop+ballHeight) > garden.clientHeight) {
+        ballTop = garden.clientHeight - ballHeight;
       }
 
       if (ballLeft < 0) {
         ballLeft = 0;
+      }
+
+      if ((ballLeft+ballWidth) > garden.clientWidth) {
+        ballLeft = garden.clientWidth - ballWidth;
       }
 
       ball.style.top = ballTop + 'px';
