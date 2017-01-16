@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Handlebarsjs test</title>
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.runtime.min.js"></script>-->
+  <!--<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+
+  <script id="entry-template" type="text/x-handlebars-template">
+    <div class="entry">
+      <h1>{{title}}</h1>
+      <div class="body">
+        {{body}}
+      </div>
+    </div>
+  </script>
+
+  <script>
+    var context = {title: "My New Post", body: "This is my first post!"};
+//    var source = $("#entry-template").html();
+      var source   = document.getElementById("entry-template").innerHTML;
+    var template = Handlebars.compile(source);
+    var html = template(context);
+  </script>
+
+</head>
+<body>
+
+<div id="block"></div>
+
+<script>
+//  $('#block').append(html);
+  document.getElementById("block").innerHTML = html;
+</script>
+</body>
+</html>
