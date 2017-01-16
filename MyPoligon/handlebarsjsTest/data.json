@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "title": "My New Post",
+      "body": "This is my first post!"
+    },
+    {
+      "title": "My Two Post",
+      "body": "Hello! This is my two post :)"
+    },
+    {
+      "title": "Все странно..",
+      "body": "Происходит что-то странное, будте внимательны!"
+    }
+  ]
+}

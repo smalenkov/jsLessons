@@ -3,25 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Handlebarsjs test</title>
-  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.runtime.min.js"></script>-->
-  <!--<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
 
   <script id="entry-template" type="text/x-handlebars-template">
-    <div class="entry">
+    <div class="posts-block">
+    {{#each posts}}
       <h1>{{title}}</h1>
       <div class="body">
         {{body}}
       </div>
+    {{/each}}
     </div>
   </script>
 
   <script>
-    var context = {title: "My New Post", body: "This is my first post!"};
-//    var source = $("#entry-template").html();
-      var source   = document.getElementById("entry-template").innerHTML;
+    var context;
+    var fetchResult = fetch('data.json')
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          setData(data);
+        })
+        .catch(function(error) {
+          log('Request failed', error)
+        });
+
+    var source   = document.getElementById("entry-template").innerHTML;
     var template = Handlebars.compile(source);
-    var html = template(context);
   </script>
 
 </head>
@@ -30,8 +39,11 @@
 <div id="block"></div>
 
 <script>
-//  $('#block').append(html);
-  document.getElementById("block").innerHTML = html;
+  function setData(data) {
+    var context = data;
+    var html = template(context);
+    document.getElementById("block").innerHTML = html;
+  }
 </script>
 </body>
 </html>
