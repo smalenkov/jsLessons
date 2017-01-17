@@ -18,8 +18,8 @@
 
   <script>
     var context;
-//    var fetchResult = fetch('http://localhost:1337/api/posts')
-    var fetchResult = fetch('dbconnect.php')
+    var fetchResult = fetch('http://localhost:1337/api/posts')
+    // var fetchResult = fetch('dbconnect.php')
         .then(function(response) {
           return response.json();
         })
@@ -41,6 +41,7 @@
   var template = Handlebars.compile(source);
 
   function setData(data) {
+    document.write(data);
     var context = data;
     var html = template(context);
     document.getElementById("block").innerHTML = html;

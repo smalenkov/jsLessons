@@ -13,11 +13,23 @@ db.once('open', function callback() {
 
 var Schema = mongoose.Schema;
 
+var Post = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    body: {
+        type: String,
+        required: true
+    }
+});
+
 var Posts = new Schema({
-  //_id: {type: Object, required: true},
-  //id: {type: String, required: true},
-  title: {type: String, required: true},
-  body: {type: String, required: true}
+  // _id: {type: Object, required: true},
+  // id: {type: String, required: true},
+  posts: [Post]
+  // title: {type: String, required: true},
+  // body: {type: String, required: true}
 });
 
 var PostsModel = mongoose.model('Posts', Posts);
