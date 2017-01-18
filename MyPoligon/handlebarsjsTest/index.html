@@ -18,13 +18,14 @@
 
   <script>
     var context;
-    var fetchResult = fetch('http://localhost:1337/api/posts')
-    // var fetchResult = fetch('dbconnect.php')
+    var fetchResult = fetch('http://localhost:1337/api/posts', {mode: 'cors'})
+//     var fetchResult = fetch('dbconnect.php')
         .then(function(response) {
-          return response.json();
+          return response.text();
         })
         .then(function(data) {
-          setData(data);
+          var dataObj = JSON.parse(data);
+          setData(dataObj);
         })
         .catch(function(error) {
           log('Request failed', error)
@@ -41,7 +42,7 @@
   var template = Handlebars.compile(source);
 
   function setData(data) {
-    document.write(data);
+//    console.log(data);
     var context = data;
     var html = template(context);
     document.getElementById("block").innerHTML = html;
