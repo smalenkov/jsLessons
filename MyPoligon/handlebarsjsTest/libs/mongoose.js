@@ -25,13 +25,9 @@ var Post = new Schema({
 });
 
 var Posts = new Schema({
-  // _id: {type: Object, required: true},
-  // id: {type: String, required: true},
   posts: [Post]
-  // title: {type: String, required: true},
-  // body: {type: String, required: true}
 });
 
-var PostsModel = mongoose.model('Posts', Posts);
+var PostsModel = mongoose.model('Post', Posts);
 
 module.exports.PostsModel = PostsModel;

@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path'); // модуль для парсинга пути
-var cors = require('cors');
+var cors = require('cors'); // модуль CORS спецификации для кросс-доменных запросов
 var log = require('./libs/log')(module);
 var PostsModel = require('./libs/mongoose').PostsModel;
 var app = express();
@@ -27,6 +27,35 @@ app.get('/api/posts', cors(), function(req, res) {
     if (!err) {
       res.statusCode = 200;
       return res.json(posts[0]);
+    } else {
+      res.statusCode = 500;
+      log.error('Internal error(%d): %s',res.statusCode,err.message);
+      return res.send({ error: 'Server error' });
+    }
+  });
+});
+
+app.get('/api/posts/:id', cors(), function(req, res) {
+    return PostsModel.findById(req.params.id, function (err, posts) {
+        if(!posts) {
+            res.statusCode = 404;
+            return res.send({ error: 'Not found' });
+        }
+        if (!err) {
+            return res.json(posts);
+        } else {
+            res.statusCode = 500;
+            log.error('Internal error(%d): %s',res.statusCode,err.message);
+            return res.send({ error: 'Server error' });
+        }
+    });
+});
+
+app.get('/api/post', cors(), function(req, res) {
+  return PostsModel.find({posts: {title: 'Снег'}}, function (err, posts) {
+    if (!err) {
+      res.statusCode = 200;
+      return res.json(posts);
     } else {
       res.statusCode = 500;
       log.error('Internal error(%d): %s',res.statusCode,err.message);

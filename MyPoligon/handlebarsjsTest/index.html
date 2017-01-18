@@ -18,26 +18,42 @@
 
   <script>
     var context;
-    var fetchResult = fetch('http://localhost:1337/api/posts', {mode: 'cors'})
-//     var fetchResult = fetch('dbconnect.php')
-        .then(function(response) {
-          return response.text();
-        })
-        .then(function(data) {
-          var dataObj = JSON.parse(data);
-          setData(dataObj);
-        })
-        .catch(function(error) {
-          log('Request failed', error)
-        });
+    function getData(url) {
+      var selfUrl = url;
+      return function() {
+        fetch(selfUrl, {mode: 'cors'})
+    //     var fetchResult = fetch('dbconnect.php')
+            .then(function(response) {
+              return response.text();
+            })
+            .then(function(data) {
+              var dataObj = JSON.parse(data);
+              setData(dataObj);
+            })
+            .catch(function(error) {
+              log('Request failed', error)
+            });
+        }
+      }
+
   </script>
 
 </head>
 <body>
 
+<button id="one-post">Первая партия постов</button>
+<button id="two-post">Вторая партия постов</button>
+
 <div id="block"></div>
 
 <script>
+  var onePostButton = document.getElementById('one-post');
+  var twoPostButton = document.getElementById('two-post');
+
+  onePostButton.addEventListener('click', getData('http://localhost:1337/api/posts/587d16e9292bb4a814005c67'));
+
+  twoPostButton.addEventListener('click', getData('http://localhost:1337/api/posts/587fc893292bb418150054de'));
+
   var source   = document.getElementById("entry-template").innerHTML;
   var template = Handlebars.compile(source);
 
