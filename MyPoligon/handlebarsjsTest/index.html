@@ -43,16 +43,18 @@
 
 <button id="one-post">Первая партия постов</button>
 <button id="two-post">Вторая партия постов</button>
+<button id="three-post">Третья партия постов</button>
 
 <div id="block"></div>
 
 <script>
   var onePostButton = document.getElementById('one-post');
   var twoPostButton = document.getElementById('two-post');
+  var threePostButton = document.getElementById('three-post');
 
   onePostButton.addEventListener('click', getData('http://localhost:1337/api/posts/587d16e9292bb4a814005c67'));
-
   twoPostButton.addEventListener('click', getData('http://localhost:1337/api/posts/587fc893292bb418150054de'));
+  threePostButton.addEventListener('click', getData('http://localhost:1337/api/posts/587dd1badae3c28c1c000029'));
 
   var source   = document.getElementById("entry-template").innerHTML;
   var template = Handlebars.compile(source);

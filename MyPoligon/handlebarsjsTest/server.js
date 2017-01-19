@@ -58,7 +58,7 @@ app.get('/api/post', cors(), function(req, res) {
       return res.json(posts);
     } else {
       res.statusCode = 500;
-      log.error('Internal error(%d): %s',res.statusCode,err.message);
+      log.error('Internal error(%d): %s', res.statusCode, err.message);
       return res.send({ error: 'Server error' });
     }
   });
