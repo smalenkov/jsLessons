@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2 let and const</title>
+  <script src="docs.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    run("Саша")
+      .then(
+        result => alert(result),
+        error => alert(error + " — неправильное имя")
+    );
+    run("Михаил")
+      .then(
+        result => alert(result),
+        error => alert(error + " — неправильное имя")
+    );
+  </script>
+</body>
+</html>
