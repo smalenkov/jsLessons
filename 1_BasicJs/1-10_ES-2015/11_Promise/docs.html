@@ -6,15 +6,23 @@
   <script src="docs.js"></script>
 </head>
 <body>
+  <div id="content"></div>
   <script type="text/javascript">
     run("Саша")
       .then(
         result => alert(result),
         error => alert(error + " — неправильное имя")
     );
-    run("Михаил")
+    run("Sergey")
       .then(
-        result => alert(result),
+        result => {
+          let dom = '<strong>name: </strong>' + result.name + '<br>' +
+                    '<strong>age: </strong>' + result.age + '<br>' +
+                    '<strong>sex: </strong>' + result.sex + '<br>' +
+                    '<strong>national: </strong>' + result.national + '<br>';
+
+          content.innerHTML = dom;
+        },
         error => alert(error + " — неправильное имя")
     );
   </script>
