@@ -1,0 +1,35 @@
+<html>
+<head>
+  <title>Patterns – singleton</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+  <script src="singleton.js"></script>
+  <script type="text/javascript">
+    //Singleton A test;
+    singleton_A.log("1..2..3... mic test");
+
+    //Singleton_B test;
+    function NonSingleton() { }
+    NonSingleton.prototype = {
+        constructor: NonSingleton,
+        scream: function(){console.log("Woooohoooooo!")}
+      };
+
+    let singleton1 = new Singleton_B();
+    let singleton2 = $.extend({}, singleton1);
+    let singleton3 = $.extend(true, {}, singleton1);
+
+    singleton1.log( "singleton 1 " );
+    singleton2.log( "singleton 2 " );
+    singleton3.log( "singleton 2 " );
+    singleton1.log( "singleton 1 " );
+    let nonsingleton = new NonSingleton();
+
+    console.log(singleton1._a);
+    singleton1.log("3..2..1... ignition!");
+    nonsingleton.scream();
+  </script>
+</head>
+<body>
+  <h1>Singleton</h1>
+</body>
+</html>
