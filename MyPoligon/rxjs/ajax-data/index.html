@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>RxJS — ajax data</title>
+</head>
+<body>
+
+<script src="https://unpkg.com/@reactivex/rxjs/dist/global/Rx.js"></script>
+<!--<script src="ajax-data.js"></script>-->
+<script>
+  let arr = [1,2,5];
+
+  let test1 = new Rx.Subject();
+
+  test1.asObservable().subscribe(c => {
+    console.log(c);
+  });
+
+  test1.next(arr);
+
+  arr.push(4);
+  arr.push(5);
+
+  test1.next(arr);
+</script>
+</body>
+</html>
