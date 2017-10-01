@@ -1,43 +1,41 @@
 ;(function () {
 
-  // Пример 1
+  class User {
+    constructor(delay) {
+      this.init(delay)
+    }
 
-  function runTest_1() {
+    init(delay) {
+      const self = this;
+      this.userName = "noName";
 
-    var i = 1;
+      function _setName() {
+        self.userName = "Tommy";
+      }
 
-    var promise = new Promise((resolve, reject) => {
-        if (i) resolve(); else reject();
+      let usPromise = new Promise((resolve, reject) => {
+        window.setTimeout(function () {
+          resolve(_setName)
+        }, delay)
       });
 
-    function yes() {
-      alert('yes');
+      usPromise.then(func => func())
+
     }
 
-    function no() {
-      alert('no');
+    // Асинхронно получить имя пользователя
+    getUserAsync() {
+      const self = this;
+      return new Promise((resolve, reject) => {
+        if (self.userName && self.userName !== "noName") {
+          resolve(self.userName);
+        } else {
+          reject("Error!!!");
+        }
+      });
+
     }
-
-    promise.then(yes, no);
-
   }
 
-  function runTest_2() {
-
-    'use strict';
-
-    fetch('data.json')
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data) {
-        //alert(data.users[1].name);
-        var datausers = data.users;
-        document.write(datausers[0].name);
-      })
-      .catch( alert );
-
-  }
-
-  window.run = runTest_2;
+  window.user = User;
 })();
