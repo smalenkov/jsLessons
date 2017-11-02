@@ -1,0 +1,43 @@
+{
+  "status": "ok",
+  "success": true,
+  "data": {
+    "user": {
+      "isAuth": false,
+      "username": null,
+      "firstName": null,
+      "lastName": null,
+      "userType": "fiz",
+      "email": null,
+      "cardNumber": null,
+      "cardStatus": null,
+      "cardBonus": null
+    },
+    "cart": {
+      "items": null,
+      "totals": {
+        "items": 0,
+        "sum": 0,
+        "oldSum": 0,
+        "weight": 0,
+        "discount": 0
+      },
+      "cartBonus": {
+        "order": 0,
+        "club": 0,
+        "large": 0,
+        "total": 0
+      },
+      "cityCode": "msk",
+      "hasInactiveProducts": false,
+      "discount": {
+        "isEnabled": true,
+        "isContractor": false,
+        "isProof": false,
+        "isAuthAvailable": false,
+        "isSlider": false
+      },
+      "gathering": false
+    }
+  }
+}
