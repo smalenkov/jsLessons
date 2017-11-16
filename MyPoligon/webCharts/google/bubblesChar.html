@@ -1,0 +1,43 @@
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['ID', 'Life Expectancy', 'Fertility Rate', 'Region',     'Population'],
+        ['',    80,              2,      'two',  33739900],
+        ['',    80,              4,      'four',         81902307],
+        ['',    80,              2,      'two',         5523095],
+        ['',    80,              2,      'two',    79716203],
+        ['',    80,              5,      'five',         61801570],
+        ['',    80,              8,      'eight',    73137148],
+        ['',    80,              3,      'three',    31090763],
+        ['',    80,              6,      'six',    7485600],
+        ['',    80,              7,      'seven',         141850000],
+        ['',    80,              6,      'six',  307007000]
+      ]);
+
+      var options = {
+        title: '',
+        hAxis: {title: ''},
+        vAxis: {title: ''},
+        bubble: {
+          textStyle: {
+            auraColor: 'none',
+          }
+        }
+      };
+
+      var chart = new google.visualization.BubbleChart(document.getElementById('noAura'));
+
+      chart.draw(data, options);
+    }
+  </script>
+</head>
+<body>
+  <div id="noAura" style="width: 900px; height: 500px;"></div>
+</body>
+</html>

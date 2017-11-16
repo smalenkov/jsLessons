@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>higthCharts</title>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-more.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+</head>
+<body>
+	
+	<div id="container" style="height: 600px; min-width: 500px; max-width: 1000px; margin: 0 auto"></div>
+	
+	<script>
+	Highcharts.chart('container', {
+
+    chart: {
+        type: 'bubble',
+        plotBorderWidth: 1,
+        zoomType: 'xy'
+    },
+
+    legend: {
+        enabled: false
+    },
+
+    title: {
+        text: 'Расходы'
+    },
+
+    subtitle: {
+        text: ''
+    },
+
+    xAxis: {
+        gridLineWidth: 1,
+        title: {
+            text: 'Daily fat intake'
+        },
+        labels: {
+            format: '{value} gr'
+        },
+        plotLines: [{
+            color: 'black',
+            dashStyle: 'dot',
+            width: 1,
+            value: 10,
+            label: {
+                rotation: 0,
+                y: 0,
+                style: {
+                    fontStyle: 'italic'
+                },
+                text: 'Safe fat intake 65g/day'
+            },
+            zIndex: 3
+        }]
+    },
+
+    yAxis: {
+        startOnTick: true,
+        endOnTick: true,
+        title: {
+            text: ''
+        },
+        labels: {
+            format: '{value} gr'
+        },
+        maxPadding: 0,
+        plotLines: [{
+            color: 'black',
+            dashStyle: 'dot',
+            width: 0,
+            value: 0,
+            label: {
+                align: 'right',
+                style: {
+                    fontStyle: 'italic'
+                },
+                text: '',
+                x: 0
+            },
+            zIndex: 3
+        }]
+    },
+
+    tooltip: {
+        useHTML: true,
+        headerFormat: '<table>',
+        pointFormat: '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
+            '<tr><th>Fat intake:</th><td>{point.x}g</td></tr>' +
+            '<tr><th>Sugar intake:</th><td>{point.y}g</td></tr>' +
+            '<tr><th>Obesity (adults):</th><td>{point.z}%</td></tr>',
+        footerFormat: '</table>',
+        followPointer: true
+    },
+
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}'
+            }
+        }
+    },
+
+    series: [{
+        data: [
+            { x: 2, y: 10, z: 5, name: '', country: 'Belgium' },
+            { x: 2, y: 20, z: 5, name: '', country: 'Germany' },
+            { x: 2, y: 30, z: 8, name: '', country: 'Finland' },
+            { x: 2, y: 40, z: 10, name: '', country: 'Netherlands' },
+            { x: 2, y: 50, z: 3, name: '', country: 'Sweden' },
+            { x: 2, y: 60, z: 2, name: '', country: 'Spain' },
+            { x: 2, y: 70, z: 5, name: '', country: 'France' },
+            { x: 2, y: 80, z: 10, name: '', country: 'Norway' },
+            { x: 2, y: 90, z: 2, name: '', country: 'United Kingdom' },
+            { x: 2, y: 100, z: 10, name: '', country: 'Italy' },
+            { x: 2, y: 110, z: 7, name: '', country: 'Russia' },
+            { x: 2, y: 120, z: 3, name: '', country: 'United States' },
+            { x: 2, y: 130, z: 7, name: '', country: 'Hungary' },
+            { x: 2, y: 140, z: 6, name: '', country: 'Portugal' },
+            { x: 2, y: 150, z: 8, name: '', country: 'New Zealand' }
+        ]
+    }]
+
+});
+</script>
+
+</body>
+</html>
