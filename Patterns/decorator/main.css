@@ -1,0 +1,46 @@
+html,
+body {
+    font-family: 'Arial', Helvetica, sans-serif;
+    padding: 4px 40px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: #333333;
+}
+
+.container-btn {
+    display: inline-block;
+    margin-top: 12px;
+}
+
+.run-script-btn {
+    border: 0;
+    padding: 8px 16px;
+    font-size: 16px;
+    color: #222222;
+    margin-left: 24px;
+    border-radius: 3px;
+    background-color: rgba(204, 204, 204, 0.8);
+    outline: none;
+}
+
+.run-script-btn:hover {
+    cursor: pointer;
+    background-color: rgba(204, 204, 204, 0.95);
+}
+
+.fire-btn {
+    background-color: #d0190c;
+    color: #ffffff;
+    font-weight: bold;
+    outline: none;
+}
+
+.fire-btn:hover {
+    cursor: pointer;
+    background-color: #db2d13;
+}
