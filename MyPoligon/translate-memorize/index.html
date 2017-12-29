@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Memorize translating words</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <h1>Translate memorize 1.0</h1>
-    <textarea cols="30" rows="10" name="totranslate" id="totranslate"></textarea>
-    <button id="translate-btn">Перевести</button>
-    <div class="translate-container" id="translate">
-        <ul id="translate-list"></ul>
+    <h1 class="title">Translate Memorize 1.0</h1>
+
+    <div class="translate-form-container">
+        <textarea cols="30" rows="10" name="totranslate" id="totranslate" class="totranslate translate-textarea"></textarea>
+        <button id="translate-btn" class="translate-btn">Перевести</button>
+        <div id="translate" class="translate-container translate-textarea">
+            <ul id="translate-list" class="translate-list"></ul>
+        </div>
     </div>
 
-    <script src="js/googleTranslateApi.js"></script>
-    <!--<script src="js/translatememo.js"></script>-->
+    <script src="js/translatememo.js"></script>
 </body>
 </html>
