@@ -1,1 +1,1 @@
-var dataSources = {};
+const dataSources = {};

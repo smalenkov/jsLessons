@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 function enumerable(value) {
     return function (target, propertyKey, descriptor) {
         descriptor.enumerable = value;
-        console.log(propertyKey + " \u0441\u043A\u0440\u044B\u0442 \u043E\u0442 \u043F\u0435\u0440\u0435\u0431\u043E\u0440\u0430.");
+        console.log(`${propertyKey} скрыт от перебора.`);
         console.log(target[propertyKey]());
     };
 }
@@ -16,21 +16,20 @@ function redefine(value) {
         descriptor.value = value;
     };
 }
-var Greeter = (function () {
-    function Greeter(message) {
+class Greeter {
+    constructor(message) {
         this.greeting = message;
     }
-    Greeter.prototype.greet = function () {
+    greet() {
         return "Hello, " + this.greeting;
-    };
-    __decorate([
-        redefine(function () { console.log('This method was redefined'); }),
-        enumerable(false)
-    ], Greeter.prototype, "greet", null);
-    return Greeter;
-}());
-var obj = new Greeter('Mister');
+    }
+}
+__decorate([
+    redefine(() => { console.log('This method was redefined'); }),
+    enumerable(false)
+], Greeter.prototype, "greet", null);
+let obj = new Greeter('Mister');
 window.obj = obj;
-for (var prop in obj) {
+for (let prop in obj) {
     console.log(prop);
 }
